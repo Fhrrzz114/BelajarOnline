@@ -6,15 +6,15 @@ RUN apt-get update && apt-get install -y \
     git \
     unzip \
     curl \
-    libzip-dev \
     zip \
+    libzip-dev \
     libpng-dev \
-    libjpeg-dev \
+    libjpeg62-turbo-dev \
     libfreetype6-dev
 
 # install php extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_mysql zip
+    && docker-php-ext-install gd pdo_mysql zip
 
 # install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -27,4 +27,4 @@ RUN php artisan config:cache
 
 EXPOSE 8080
 
-CMD php artisan serve --host=0.0.0.0 --port=8080
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
