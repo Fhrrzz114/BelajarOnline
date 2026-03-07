@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    --surface-gradient: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.4) 100%
+    );
+}
+
+body {
+    @apply antialiased text-slate-900;
+    font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-outfit {
+    font-family: "Outfit", sans-serif;
+}
+
+/* Prisma Loading Animation */
+.prisma-loader-container {
+    perspective: 1000px;
+    width: 100px;
+    height: 100px;
+}
+
+.prisma {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotate-prisma 3s infinite linear;
+}
+
+.prisma-face {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 86.6px solid rgba(99, 102, 241, 0.85); /* Indigo */
+    opacity: 0.9;
+    filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.4));
+}
+
+.prisma-face::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -40px;
+    width: 80px;
+    height: 70px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.2)
+    );
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.prisma-face:nth-child(1) {
+    transform: rotateY(0deg) translateZ(28.8px) rotateX(19.5deg);
+}
+.prisma-face:nth-child(2) {
+    transform: rotateY(120deg) translateZ(28.8px) rotateX(19.5deg);
+}
+.prisma-face:nth-child(3) {
+    transform: rotateY(240deg) translateZ(28.8px) rotateX(19.5deg);
+}
+.prisma-face:nth-child(4) {
+    border-bottom-color: rgba(168, 85, 247, 0.85); /* Purple */
+    transform: rotateY(0deg) rotateX(-90deg) translateZ(0);
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 86.6px solid rgba(168, 85, 247, 0.8);
+}
+
+@keyframes rotate-prisma {
+    0% {
+        transform: rotateX(-20deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateX(-20deg) rotateY(360deg);
+    }
+}
+
+/* Page Overlay */
+.loader-overlay {
+    @apply fixed inset-0 z-[9999] flex items-center justify-center bg-white/80 backdrop-blur-md transition-opacity duration-500 opacity-0 pointer-events-none;
+}
+
+.loader-overlay.active {
+    @apply opacity-100 pointer-events-auto;
+}
+
+.text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600;
+}
