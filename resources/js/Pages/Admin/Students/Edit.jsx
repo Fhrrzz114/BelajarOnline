@@ -25,125 +25,123 @@ export default function Edit({ auth, student }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={`Edit Siswa: ${student.name}`}
+            header="Identity Refinement"
         >
-            <Head title="Edit Siswa" />
+            <Head title={`Modify ${student.name}`} />
 
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div className="p-8">
-                        <div className="flex items-center gap-3 mb-8 pb-6 border-b border-gray-50">
-                            <div className="h-12 w-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-slate-100 overflow-hidden">
+                    <div className="p-10">
+                        <div className="flex items-center gap-6 mb-12 pb-10 border-b border-slate-50">
+                            <div className="h-16 w-16 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-2xl shadow-slate-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M11 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold text-gray-800">Ubah Data Siswa</h3>
-                                <p className="text-sm text-gray-500">Perbarui informasi profil atau ganti password siswa.</p>
+                                <h3 className="text-3xl font-black text-slate-900 tracking-tight leading-none uppercase">Profile Authorization</h3>
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2 italic">Perbarui metadata identitas dan hak akses untuk personil.</p>
                             </div>
                         </div>
 
-                        <form onSubmit={submit} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <InputLabel htmlFor="name" value="Nama Lengkap" className="text-gray-700 font-bold mb-1" />
+                        <form onSubmit={submit} className="space-y-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Full Identity Name</label>
                                     <TextInput
                                         id="name"
                                         name="name"
                                         value={data.name}
-                                        className="mt-1 block w-full rounded-xl border-gray-200 focus:ring-indigo-500"
+                                        className="w-full rounded border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-violet-50 focus:border-violet-600 transition-all py-4 px-5 shadow-sm font-black text-slate-900"
                                         isFocused={true}
                                         onChange={(e) => setData('name', e.target.value)}
                                         required
                                     />
-                                    <InputError message={errors.name} className="mt-2" />
+                                    <InputError message={errors.name} className="mt-1 ml-1" />
                                 </div>
 
-                                <div>
-                                    <InputLabel htmlFor="classroom" value="Kelas" className="text-gray-700 font-bold mb-1" />
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Class Segment Assignment</label>
                                     <TextInput
                                         id="classroom"
                                         name="classroom"
                                         value={data.classroom}
-                                        className="mt-1 block w-full rounded-xl border-gray-200 focus:ring-indigo-500"
-                                        placeholder="Contoh: 12-MIPA-1"
+                                        className="w-full rounded border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-violet-50 focus:border-violet-600 transition-all py-4 px-5 shadow-sm font-bold text-slate-700"
+                                        placeholder="e.g. 12-SCIENCE-A"
                                         onChange={(e) => setData('classroom', e.target.value)}
                                     />
-                                    <InputError message={errors.classroom} className="mt-2" />
+                                    <InputError message={errors.classroom} className="mt-1 ml-1" />
                                 </div>
-                            </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <InputLabel htmlFor="nisn" value="NISN" className="text-gray-700 font-bold mb-1" />
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Unique NISN ID</label>
                                     <TextInput
                                         id="nisn"
                                         name="nisn"
                                         value={data.nisn}
-                                        className="mt-1 block w-full rounded-xl border-gray-200 focus:ring-indigo-500 font-mono"
+                                        className="w-full rounded border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-violet-50 focus:border-violet-600 transition-all py-4 px-5 shadow-sm font-black text-slate-900 tracking-tighter"
                                         onChange={(e) => setData('nisn', e.target.value)}
                                         required
                                     />
-                                    <InputError message={errors.nisn} className="mt-2" />
+                                    <InputError message={errors.nisn} className="mt-1 ml-1" />
                                 </div>
 
-                                <div>
-                                    <InputLabel htmlFor="email" value="Email" className="text-gray-700 font-bold mb-1" />
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Digital Mail Address</label>
                                     <TextInput
                                         id="email"
                                         type="email"
                                         name="email"
                                         value={data.email}
-                                        className="mt-1 block w-full rounded-xl border-gray-200 focus:ring-indigo-500"
+                                        className="w-full rounded border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-violet-50 focus:border-violet-600 transition-all py-4 px-5 shadow-sm font-bold text-slate-700 underline underline-offset-4 decoration-slate-200"
                                         onChange={(e) => setData('email', e.target.value)}
                                         required
                                     />
-                                    <InputError message={errors.email} className="mt-2" />
+                                    <InputError message={errors.email} className="mt-1 ml-1" />
                                 </div>
                             </div>
 
-                            <div className="pt-4 border-t border-gray-50">
-                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Ganti Password (Opsional)</h4>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <InputLabel htmlFor="password" value="Password Baru" className="text-gray-700 font-bold mb-1" />
+                            <div className="pt-10 border-t border-slate-50">
+                                <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-8 text-center italic">Cryptographic Credential Update (Optional)</h4>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+                                    <div className="space-y-3">
+                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">New Secure Passkey</label>
                                         <TextInput
                                             id="password"
                                             type="password"
                                             name="password"
                                             value={data.password}
-                                            className="mt-1 block w-full rounded-xl border-gray-200 focus:ring-indigo-500"
+                                            className="w-full rounded border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-violet-50 focus:border-violet-600 transition-all py-4 px-5 shadow-sm"
                                             onChange={(e) => setData('password', e.target.value)}
                                         />
-                                        <InputError message={errors.password} className="mt-2" />
+                                        <InputError message={errors.password} className="mt-1 ml-1" />
                                     </div>
 
-                                    <div>
-                                        <InputLabel htmlFor="password_confirmation" value="Konfirmasi Password Baru" className="text-gray-700 font-bold mb-1" />
+                                    <div className="space-y-3">
+                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Confirm New Secret</label>
                                         <TextInput
                                             id="password_confirmation"
                                             type="password"
                                             name="password_confirmation"
                                             value={data.password_confirmation}
-                                            className="mt-1 block w-full rounded-xl border-gray-200 focus:ring-indigo-500"
+                                            className="w-full rounded border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-violet-50 focus:border-violet-600 transition-all py-4 px-5 shadow-sm"
                                             onChange={(e) => setData('password_confirmation', e.target.value)}
                                         />
-                                        <InputError message={errors.password_confirmation} className="mt-2" />
+                                        <InputError message={errors.password_confirmation} className="mt-1 ml-1" />
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-50">
+                            <div className="flex items-center justify-between pt-10 border-t border-slate-50">
                                 <Link
                                     href={route('admin.student.index')}
-                                    className="text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors"
+                                    className="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] hover:text-slate-900 transition-all underline underline-offset-8 decoration-slate-100 hover:decoration-slate-900"
                                 >
-                                    &larr; Kembali ke Daftar
+                                    &larr; Abort & Return
                                 </Link>
                                 <PrimaryButton 
-                                    className="px-8 h-12 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100 ring-offset-2 border-none" 
+                                    className="px-10 py-5 bg-slate-900 text-white font-black text-[10px] uppercase tracking-[0.2em] rounded hover:bg-violet-600 transition-all shadow-2xl shadow-slate-200" 
                                     disabled={processing}
                                 >
-                                    {processing ? 'Menyimpan...' : 'Perbarui Data Siswa'}
+                                    {processing ? 'SYNCING...' : 'Authorize Updates'}
                                 </PrimaryButton>
                             </div>
                         </form>

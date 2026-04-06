@@ -23,12 +23,12 @@ export default function PrismaLoader() {
     return (
         <div className={`loader-overlay ${loading ? 'active' : ''}`}>
             <div className="flex flex-col items-center gap-8">
-                <div className="prisma-loader-container">
-                    <div className="prisma">
-                        <div className="prisma-face"></div>
-                        <div className="prisma-face"></div>
-                        <div className="prisma-face"></div>
-                        <div className="prisma-face"></div>
+                <div className="saturn-loader-container">
+                    <div className="saturn">
+                        <div className="planet"></div>
+                        <div className="saturn-ring"></div>
+                        <div className="saturn-ring saturn-ring-2"></div>
+                        <div className="saturn-ring saturn-ring-3"></div>
                     </div>
                 </div>
                 <div className="flex flex-col items-center">

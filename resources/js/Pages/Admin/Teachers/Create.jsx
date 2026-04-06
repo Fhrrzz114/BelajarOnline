@@ -23,96 +23,98 @@ export default function Create({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header="Tambah Guru Baru"
+            header="Faculty Enlistment"
         >
-            <Head title="Tambah Guru" />
+            <Head title="Enlist Faculty" />
 
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div className="p-8">
-                        <div className="flex items-center gap-3 mb-8 pb-6 border-b border-gray-50">
-                            <div className="h-12 w-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-slate-100 overflow-hidden mb-20">
+                    <div className="p-10">
+                        <div className="flex items-center gap-6 mb-12 pb-10 border-b border-slate-50">
+                            <div className="h-16 w-16 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-2xl shadow-slate-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold text-gray-800">Form Pendaftaran Guru</h3>
-                                <p className="text-sm text-gray-500">Buat akun untuk guru atau staf administrasi baru.</p>
+                                <h3 className="text-3xl font-black text-slate-900 tracking-tight leading-none uppercase">Personnel Provisioning</h3>
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2 italic">Configure access credentials and authority for faculty members.</p>
                             </div>
                         </div>
 
-                        <form onSubmit={submit} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <InputLabel htmlFor="name" value="Nama Lengkap" className="text-gray-700 font-bold mb-1" />
+                        <form onSubmit={submit} className="space-y-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Full Identity Name</label>
                                     <TextInput
                                         id="name"
                                         name="name"
                                         value={data.name}
-                                        className="mt-1 block w-full rounded-xl border-gray-200 focus:ring-indigo-500"
+                                        className="w-full rounded border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-violet-50 focus:border-violet-600 transition-all py-4 px-5 shadow-sm font-black text-slate-900 placeholder:text-slate-200"
                                         isFocused={true}
                                         onChange={(e) => setData('name', e.target.value)}
+                                        placeholder="EX: PROF. JOHN DOE"
                                         required
                                     />
-                                    <InputError message={errors.name} className="mt-2" />
+                                    <InputError message={errors.name} className="mt-1 ml-1" />
                                 </div>
 
-                                <div>
-                                    <InputLabel htmlFor="email" value="Email" className="text-gray-700 font-bold mb-1" />
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Digital Mail Address</label>
                                     <TextInput
                                         id="email"
                                         type="email"
                                         name="email"
                                         value={data.email}
-                                        className="mt-1 block w-full rounded-xl border-gray-200 focus:ring-indigo-500"
+                                        className="w-full rounded border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-violet-50 focus:border-violet-600 transition-all py-4 px-5 shadow-sm font-bold text-slate-700 underline underline-offset-4 decoration-slate-200"
                                         onChange={(e) => setData('email', e.target.value)}
+                                        placeholder="faculty@platform.edu"
                                         required
                                     />
-                                    <InputError message={errors.email} className="mt-2" />
+                                    <InputError message={errors.email} className="mt-1 ml-1" />
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-50">
-                                <div>
-                                    <InputLabel htmlFor="password" value="Password" className="text-gray-700 font-bold mb-1" />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 pt-10 border-t border-slate-50">
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Master Passkey</label>
                                     <TextInput
                                         id="password"
                                         type="password"
                                         name="password"
                                         value={data.password}
-                                        className="mt-1 block w-full rounded-xl border-gray-200 focus:ring-indigo-500"
+                                        className="w-full rounded border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-violet-50 focus:border-violet-600 transition-all py-4 px-5 shadow-sm"
                                         onChange={(e) => setData('password', e.target.value)}
                                         required
                                     />
-                                    <InputError message={errors.password} className="mt-2" />
+                                    <InputError message={errors.password} className="mt-1 ml-1" />
                                 </div>
 
-                                <div>
-                                    <InputLabel htmlFor="password_confirmation" value="Konfirmasi Password" className="text-gray-700 font-bold mb-1" />
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Verify Secret</label>
                                     <TextInput
                                         id="password_confirmation"
                                         type="password"
                                         name="password_confirmation"
                                         value={data.password_confirmation}
-                                        className="mt-1 block w-full rounded-xl border-gray-200 focus:ring-indigo-500"
+                                        className="w-full rounded border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-violet-50 focus:border-violet-600 transition-all py-4 px-5 shadow-sm"
                                         onChange={(e) => setData('password_confirmation', e.target.value)}
                                         required
                                     />
-                                    <InputError message={errors.password_confirmation} className="mt-2" />
+                                    <InputError message={errors.password_confirmation} className="mt-1 ml-1" />
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-50">
+                            <div className="flex items-center justify-between pt-10 border-t border-slate-50">
                                 <Link
                                     href={route('admin.teacher.index')}
-                                    className="text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors"
+                                    className="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] hover:text-slate-900 transition-all underline underline-offset-8 decoration-slate-100 hover:decoration-slate-900"
                                 >
-                                    &larr; Kembali ke Daftar
+                                    &larr; Abort & Return
                                 </Link>
                                 <PrimaryButton 
-                                    className="px-8 h-12 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100 ring-offset-2 border-none" 
+                                    className="px-10 py-5 bg-slate-900 text-white font-black text-[10px] uppercase tracking-[0.2em] rounded hover:bg-violet-600 transition-all shadow-2xl shadow-slate-200 active:scale-95 disabled:opacity-50" 
                                     disabled={processing}
                                 >
-                                    {processing ? 'Menyimpan...' : 'Simpan Data Guru'}
+                                    {processing ? 'SYNCHRONIZING...' : 'Authorize Faculty Access'}
                                 </PrimaryButton>
                             </div>
                         </form>

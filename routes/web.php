@@ -64,6 +64,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         ->names('admin.exam-grade')
         ->parameters(['exam-grades' => 'examGrade']);
 
+    Route::post('admin/schedules/generate', [App\Http\Controllers\Admin\ScheduleController::class, 'generate'])->name('admin.schedules.generate');
+    Route::delete('admin/schedules/course/{id}', [App\Http\Controllers\Admin\ScheduleController::class, 'destroyCourse'])->name('admin.schedules.destroyCourse');
+    Route::get('admin/schedules/download/{classroom}', [App\Http\Controllers\Admin\ScheduleController::class, 'download'])->name('admin.schedules.download');
     Route::resource('admin/schedules', App\Http\Controllers\Admin\ScheduleController::class)
         ->names('admin.schedules');
 });

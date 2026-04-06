@@ -7,94 +7,91 @@ export default function Index({ auth, teachers }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header="Data Guru & Admin"
+            header="Faculty Registry"
         >
-            <Head title="Data Guru" />
+            <Head title="Teachers & Admins" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Alert Messages */}
                 {(flash?.message || flash?.success) && (
-                    <div className="mb-6 p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg flex items-center shadow-sm">
-                        <svg className="h-5 w-5 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <p className="text-sm font-medium text-green-800">{flash.message || flash.success}</p>
-                    </div>
-                )}
-                {flash?.error && (
-                    <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg flex items-center shadow-sm">
-                        <svg className="h-5 w-5 text-red-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                        </svg>
-                        <p className="text-sm font-medium text-red-800">{flash.error}</p>
+                    <div className="mb-10 p-5 bg-slate-900 text-white rounded-xl flex items-center shadow-2xl shadow-slate-200 animate-in fade-in slide-in-from-top-4 duration-500">
+                        <div className="h-10 w-10 rounded bg-white/10 mr-5 flex items-center justify-center text-cyan-400">
+                            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em]">{flash.message || flash.success}</p>
                     </div>
                 )}
 
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div className="p-6 border-b border-gray-50 flex justify-between items-center bg-gray-50/50">
-                        <h3 className="text-lg font-bold text-gray-800">Daftar Guru / Admin</h3>
+                <div className="bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-slate-50 overflow-hidden mb-20">
+                    <div className="p-8 border-b border-slate-50 flex justify-between items-center bg-slate-50/30">
+                        <div>
+                            <h3 className="text-xl font-black text-slate-900 tracking-tight leading-none uppercase">Personnel Roster</h3>
+                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Authorized faculty and administrative records.</p>
+                        </div>
                         <Link
                             href={route('admin.teacher.create')}
-                            className="inline-flex items-center px-5 py-2.5 bg-indigo-600 border border-transparent rounded-xl font-bold text-sm text-white hover:bg-indigo-700 transition-all duration-150 shadow-lg shadow-indigo-100 gap-2"
+                            className="inline-flex items-center px-8 py-4 bg-slate-900 text-white font-black text-[10px] uppercase tracking-[0.2em] rounded hover:bg-violet-600 transition-all shadow-2xl shadow-slate-200 gap-3 active:scale-95"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
-                            Tambah Guru
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                            Enlist Faculty
                         </Link>
                     </div>
 
                     <div className="overflow-x-auto">
-                        <table className="min-w-full divide-y divide-gray-100">
+                        <table className="min-w-full divide-y divide-slate-50/50">
                             <thead>
-                                <tr className="bg-white">
-                                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest border-b border-gray-100">Profil Guru</th>
-                                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-widest border-b border-gray-100">Otoritas</th>
-                                    <th className="px-6 py-4 text-right text-xs font-bold text-gray-400 uppercase tracking-widest border-b border-gray-100">Aksi</th>
+                                <tr>
+                                    <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-b border-slate-50/50">Full Identity</th>
+                                    <th className="px-8 py-6 text-left text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-b border-slate-50/50">Authorization Level</th>
+                                    <th className="px-8 py-6 text-right text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-b border-slate-50/50">Execution</th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white divide-y divide-gray-50">
+                            <tbody className="divide-y divide-slate-50/30">
                                 {teachers.map((teacher) => (
-                                    <tr key={teacher.id} className="hover:bg-indigo-50/30 transition-colors group">
-                                        <td className="px-6 py-4">
-                                            <div className="flex items-center gap-3">
-                                                <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold border border-blue-200">
+                                    <tr key={teacher.id} className="hover:bg-slate-50/30 transition-all group">
+                                        <td className="px-8 py-6">
+                                            <div className="flex items-center gap-5">
+                                                <div className="h-12 w-12 rounded bg-slate-900 flex items-center justify-center text-white font-black text-xs shadow-xl shadow-slate-100 group-hover:bg-cyan-500 transition-colors">
                                                     {teacher.name.charAt(0).toUpperCase()}
                                                 </div>
                                                 <div>
-                                                    <div className="text-sm font-bold text-gray-800">{teacher.name}</div>
-                                                    <div className="text-xs text-gray-500">{teacher.email}</div>
+                                                    <div className="text-base font-black text-slate-900 tracking-tight leading-none mb-1">{teacher.name}</div>
+                                                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{teacher.email}</div>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4">
+                                        <td className="px-8 py-6">
                                             {teacher.id === auth.user.id ? (
-                                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 border border-green-200">
-                                                    Akun Saya
+                                                <span className="inline-flex items-center px-3 py-1.5 rounded-full text-[10px] font-black bg-cyan-50 text-cyan-700 border border-cyan-100 uppercase tracking-widest">
+                                                    CURRENT SESSION
                                                 </span>
                                             ) : (
-                                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-gray-100 text-gray-600 border border-gray-200">
-                                                    Guru / Admin
+                                                <span className="inline-flex items-center px-3 py-1.5 rounded bg-slate-50 text-slate-600 text-[10px] font-black uppercase tracking-widest border border-slate-100">
+                                                    FACULTY / ADMIN
                                                 </span>
                                             )}
                                         </td>
-                                        <td className="px-6 py-4 text-right">
-                                            <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <td className="px-8 py-6 text-right">
+                                            <div className="flex justify-end gap-3 translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                                                 <Link
                                                     href={route('admin.teacher.edit', teacher.id)}
-                                                    className="p-2 text-indigo-600 hover:bg-indigo-100 rounded-lg transition-colors"
-                                                    title="Edit Data"
+                                                    className="h-10 w-10 flex items-center justify-center bg-white border border-slate-100 text-slate-400 font-bold rounded hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all shadow-sm active:scale-95"
+                                                    title="Refine Identity"
                                                 >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M11 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                                                 </Link>
                                                 {teacher.id !== auth.user.id && (
                                                     <Link
                                                         href={route('admin.teacher.destroy', teacher.id)}
                                                         method="delete"
                                                         as="button"
-                                                        className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition-colors"
-                                                        onBefore={() => confirm('Hapus akun guru ini?')}
-                                                        title="Hapus Data"
+                                                        className="h-10 w-10 flex items-center justify-center bg-white border border-slate-100 text-rose-300 font-bold rounded hover:bg-rose-500 hover:text-white hover:border-rose-500 transition-all shadow-sm active:scale-95"
+                                                        onBefore={() => confirm('Erase faculty record permanently?')}
+                                                        title="Erase Record"
                                                     >
-                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                                                     </Link>
                                                 )}
                                             </div>
